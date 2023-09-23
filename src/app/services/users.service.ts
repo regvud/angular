@@ -5,15 +5,19 @@ import {IUser} from "../interfaces/user.interface";
 import {urls} from "../constants/urls";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UsersService {
 
-  constructor(private httpClient: HttpClient) {
-  }
+    constructor(private httpClient: HttpClient) {
+    }
 
-  getAll(): Observable<IUser[]> {
-    return this.httpClient.get<IUser[]>(urls.users.base)
-  }
+    getAll(): Observable<IUser[]> {
+        return this.httpClient.get<IUser[]>(urls.users.base)
+    }
+
+    byID(id: number): Observable<IUser> {
+        return this.httpClient.get<IUser>(urls.users.byID(id))
+    }
 
 }
